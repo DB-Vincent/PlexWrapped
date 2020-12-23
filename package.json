@@ -1,0 +1,17 @@
+{
+  "name": "plexwrapped",
+  "version": "1.0.0",
+  "description": "A little Spotify Wrapped-styled tool for a Plex server",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Vincent De Borger",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.0",
+    "body-parser": "^1.19.0",
+    "ejs": "^3.1.5",
+    "express": "^4.17.1"
+  }
+}

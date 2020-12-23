@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>PlexWrapped: <%= username %></title>
+        <link rel="stylesheet" type="text/css" href="/css/main.css">
+        <link rel="stylesheet" type="text/css" href="/css/reset.css">
+        
+    </head>
+    <body>
+        <div class="container">
+            <h1 class="logo">Plex Wrapped</h1>
+            <div class="user-widget">
+                <img src="<%= user_pic %>" class="profile-pic" />
+                <div class="user-info">
+                    <h3><%= username %></h3>
+                    <p><%= playtime %>h of content played</p>
+                </div>
+            </div>
+            <h3>Your most active devices</h3>
+        </div>
+        <div class="vertical-scroll">
+            <% players.forEach((player, index) => { %>
+                <div class="box">
+                    <div class="square">
+                        <h4>#<%= index + 1 %></h4>
+                    </div>
+                    <div class="box-info">
+                        <div class="holder">
+                            <h3><%= player.name %></h3>
+                            <p><%= player.total_plays %> plays</p>
+                        </div>
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+
+        <div class="container">
+            <h3>Play statistics</h3>
+            <% plays.forEach((play) => { %>
+                <div class="item">
+                    <div class="square">
+                        <% if (play.name === "TV") { %>
+                            <i class="fas fa-tv"></i>
+                        <% } else if (play.name === "Movies") { %>
+                            <i class="fas fa-film"></i>
+                        <% } else if (play.name === "Music") { %>
+                            <i class="fas fa-music"></i>
+                        <% } %>
+                    </div>
+                    <div class="holder">
+                        <p>
+                            You've played <b><%= play.plays %> </b>
+                            <% if (play.name === "TV") { %>
+                                episodes
+                            <% } else if (play.name === "Movies") { %>
+                                movies
+                            <% } else if (play.name === "Music") { %>
+                                songs
+                            <% } %>
+                        </p>
+                    </div>
+                </div>
+            <% }) %>   
+
+            <h3>Your most popular tv shows</h3>
+        </div>
+        <div class="vertical-scroll">
+            <% most_popular_tv.forEach((show, index) => { %>
+                <div class="box">
+                    <div class="square">
+                        <h4>#<%= index + 1 %></h4>
+                    </div>
+                    <div class="box-info">
+                        <div class="holder">
+                            <h3><%= show.name %></h3>
+                            <p><%= show.plays %> plays</p>
+                        </div>
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+
+        <div class="container">
+            <h3>Your most popular movies</h3>
+        </div>
+        <div class="vertical-scroll">
+            <% most_popular_movies.forEach((movie, index) => { %>
+                <div class="box">
+                    <div class="square">
+                        <h4>#<%= index + 1 %></h4>
+                    </div>
+                    <div class="box-info">
+                        <div class="holder">
+                            <h3><%= movie.name %></h3>
+                            <p><%= movie.plays %> plays</p>
+                        </div>
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+
+        <div class="container">
+            <h3>Your most popular artists</h3>
+        </div>
+        <div class="vertical-scroll">
+            <% most_popular_music.forEach((artist, index) => { %>
+                <div class="box">
+                    <div class="square">
+                        <h4>#<%= index + 1 %></h4>
+                    </div>
+                    <div class="box-info">
+                        <div class="holder">
+                            <h3><%= artist.name %></h3>
+                            <p><%= artist.plays %> plays</p>
+                        </div>
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+
+        <div class="container">
+            <h2>This year's top users:</h2>
+            
+                <% top_users.forEach((user, index) => { %>
+                    <div class="item">
+                        <div class="square">
+                            <h4>#<%= index + 1 %></h4>
+                        </div>
+                        <div class="holder">
+                            <h3><%= user.name %></h3>
+                            <p class="secondary"><%= user.total_time %>h of content streamed</p>
+                        </div>
+                    </div>
+                <% }) %>
+
+            <br><br><b>Loadtime: <%= load_time %>s</b>
+        </div>
+        <script src="https://kit.fontawesome.com/d57ead3aa2.js" crossorigin="anonymous"></script>
+    </body>
+</html>
